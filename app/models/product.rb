@@ -4,4 +4,5 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :comment, length: { minimum: 15 }
+  has_one_attached :photo
 end
