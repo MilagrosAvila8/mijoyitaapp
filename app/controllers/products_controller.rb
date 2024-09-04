@@ -41,6 +41,14 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: 'Product was destroyed.'
   end
 
+  def bought
+
+  end
+
+  def sales
+  end
+  
+
   private
 
   def product_params
