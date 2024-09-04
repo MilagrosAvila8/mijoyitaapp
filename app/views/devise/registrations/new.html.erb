@@ -8,6 +8,7 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :address %>
+    <%= f.input :role, collection: [['Vendedor', 'vendedor'], ['Comprador', 'comprador']], prompt: "Select a role", input_html: { class: 'form-control' } %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
