@@ -1,17 +1,17 @@
 <h1>Products#index</h1>
 <p>Find me in app/views/products/index.html.erb</p>
 
-<ul>
+<ul class= "d-flex flex-wrap list-unstyled" >
   <% @products.each do |product| %>
-    <li>
+    <li class= " bg-white shadow m-2 p-4">
+    <%= link_to product, class:"text-decoration-none text-black" do %>
       <strong><%= product.name %></strong><br>
       Price: $<%= product.price %><br>
-      Comment: <%= product.comment %>
       <% unless product.photo.url.nil? %>
         <%= cl_image_tag(product.photo.key, height: 200, crop: :fill) %>
       <% end %>
 
     </li>
-
+    <% end %>
   <% end %>
 </ul>

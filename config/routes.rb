@@ -9,6 +9,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :products do
+    resources :line_items, only: [ :new, :create]
+  end
+  resources :cart, only: [:show]
+  resources :line_items, only: [ :update, :destroy]
+
   resources :products
 
   get "boughts", to: "products#bought", as: "boughts"

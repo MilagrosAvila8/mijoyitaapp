@@ -1,11 +1,19 @@
 class LineItemsController < ApplicationController
   # POST /line_items
   def create
-    @line_item = LineItem.new(line_item_params)
+
+    @line_item = LineItem.new
+    @product = Product.find(params[:product_id])
+    @user = current_user
+    Cart.create(user_id: current_user.id) if @user.carts.empty?
+
+    @cart = current_user.carts.first
+    @line_item.cart = @cart
+
     if @line_item.save
-      redirect_to @line_item, notice: 'Product was created'
+      redirect_to cart_path(@cart), notice: 'Product was added'
     else
-      render :new, status: :unprocessable_entity
+      render "products/show", status: :unprocessable_entity
     end
   end
 
