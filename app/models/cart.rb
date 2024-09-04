@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
-  has many :line_items
+  has_many :line_items, dependent: :destroy
 
-  validates :status, presence: true
+  # validates :status, presence: true
+  belongs_to :user
 end
