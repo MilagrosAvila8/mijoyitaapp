@@ -7,6 +7,11 @@
       <strong><%= product.name %></strong><br>
       Price: $<%= product.price %><br>
       Comment: <%= product.comment %>
+      <% unless product.photo.url.nil? %>
+        <%= cl_image_tag(product.photo.key, height: 200, crop: :fill) %>
+      <% end %>
+
     </li>
+
   <% end %>
 </ul>

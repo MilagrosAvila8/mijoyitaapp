@@ -4,5 +4,6 @@
       <h2><%= @product.name %></h2>
       <p><%= @product.price%></p>
       <h3><%= @product.comment %></h3>
-      <h4><%= @product.photo %></h4>
+      <h4><%= cl_image_tag(@product.photo.key, height: 200, crop: :fill) %></h4>
+      
     </div>
