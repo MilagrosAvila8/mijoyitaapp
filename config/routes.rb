@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     #   get :pulseras
     # end
   end
-  resources :cart, only: [:show]
+  resources :carts, only: [:show, :update]
   resources :line_items, only: [ :update, :destroy]
 
   resources :products
@@ -31,4 +31,9 @@ Rails.application.routes.draw do
   resources :cart, only: [:show]
   resources :line_items, only: [ :create, :update, :destroy]
 
+  resources :carts do
+    member do
+      patch :close  # Ruta para cerrar el carrito
+    end
+  end
 end
