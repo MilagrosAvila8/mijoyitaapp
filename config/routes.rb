@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :line_items, only: [ :new, :create]
   end
-  resources :cart, only: [:show]
+  resources :carts, only: [:show, :update]
   resources :line_items, only: [ :update, :destroy]
 
   resources :products
@@ -25,4 +25,9 @@ Rails.application.routes.draw do
   resources :cart, only: [:show]
   resources :line_items, only: [ :create, :update, :destroy]
 
+  resources :carts do
+    member do
+      patch :close  # Ruta para cerrar el carrito
+    end
+  end
 end
