@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    # @products = Product.all
+
+    if params[:query].present?
+      @products = Product.where('name LIKE ?', "%#{params[:query]}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -47,7 +53,6 @@ class ProductsController < ApplicationController
 
   def sales
   end
-  
 
   private
 
