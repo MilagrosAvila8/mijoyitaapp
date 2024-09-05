@@ -12,11 +12,17 @@ class CartsController < ApplicationController
   end
 
   def close
-    if @cart.update(status: 'closed')  # Asegúrate de tener un campo 'status' en tu modelo Cart
-      redirect_to @cart, notice: 'Cart was successfully closed.'
+    if @cart.update(status: 'Pagado') # Asegúrate de tener un campo 'status' en tu modelo Cart
+      redirect_to @cart, notice: 'Cart fue cerrado correctamente.'
     else
-      redirect_to @cart, alert: 'Unable to close the cart.'
+      redirect_to @cart, alert: 'No se puede cerrar el carrito.'
     end
+  end
+
+  def create
+    cart = Cart.new(user_id: params[:user_id])
+    cart.save
+    redirect_to root_path
   end
 
   private
@@ -24,8 +30,10 @@ class CartsController < ApplicationController
   def set_cart
     @cart = Cart.find_by(id: params[:id])
     unless @cart
-      flash[:alert] = "Cart not found."
+      flash[:alert] = "Carrito no encontrado."
       redirect_to root_path  # O a una página apropiada en caso de que no haya un carrito
     end
   end
+
+
 end

@@ -6,7 +6,8 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
 
     # Encuentra o crea el carrito del usuario
-    cart = current_user.cart || Cart.create(user: current_user)
+    cart = Cart.where(status: "En proceso", user_id: current_user).first
+
 
     # Encuentra o crea el LineItem para el producto en el carrito
     line_item = cart.line_items.find_or_initialize_by(product: product)

@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
-  has_one :cart, dependent: :destroy
+  has_many :cart, dependent: :destroy
   validates :role, presence: true, inclusion: { in: ['vendedor', 'comprador'] }
+
+
 end
