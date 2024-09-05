@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :line_items, only: [ :new, :create]
+    # collection do
+    #   get :aretes
+    #   get :anillos
+    #   get :collares
+    #   get :pulseras
+    # end
   end
   resources :carts, only: [:show, :update]
   resources :line_items, only: [ :update, :destroy]
