@@ -79,7 +79,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["MY_APP_DATABASE_URL"] %>
+  url: postgres://u9m68rm2gb49rg:p1607752c869da8de8c3543da7f8978267cbd263d4d7db1c718f2c4a84ccb3d84@c724r43q8jp5nk.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d7i2pobplvbsne
   database: mijoyita_production
   username: mijoyita
   password: <%= ENV["MIJOYITA_DATABASE_PASSWORD"] %>
