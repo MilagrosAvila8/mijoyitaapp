@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     #   get :pulseras
     # end
   end
-  resources :carts, only: [:show, :update]
+  resources :carts, only: [:show, :update, :create]
   resources :line_items, only: [ :update, :destroy]
 
   resources :products

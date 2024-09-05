@@ -1,7 +1,7 @@
 <h1>Cart Details</h1>
 <p>Status: <%= @cart.status %></p>
 <p>Total: <%= number_to_currency(@total) %></p>
-<%= button_to 'Close Cart', close_cart_path(@cart), method: :patch, class: 'btn btn-warning', data: { confirm: 'Are you sure you want to close this cart?' } %>
+<%= button_to 'Pagar', close_cart_path(@cart), method: :patch, class: 'btn btn-warning', data: { confirm: 'Are you sure you want to close this cart?' } %>
 
 <h2>Line Items</h2>
 <p>
@@ -11,7 +11,7 @@
     <p>Quantity: <%= item.quantity %></p>
     <p>Price: <%= number_to_currency(item.price) %></p>
      <%= form_with(model: item, url: line_item_path(item), method: :patch, local: true) do |form| %>
-      <%= form.label :quantity, "Quantity" %>
+      <%= form.label :quantity, "Cantidad" %>
       <%= form.number_field :quantity, min: 1, value: item.quantity %>
       <%= form.submit "Update Quantity" %>
       <% end %>
