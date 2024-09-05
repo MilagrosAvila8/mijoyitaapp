@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
   database: mijoyita_production
   username: mijoyita
   password: <%= ENV["MIJOYITA_DATABASE_PASSWORD"] %>
