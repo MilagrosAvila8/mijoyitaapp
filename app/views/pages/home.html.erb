@@ -1,6 +1,6 @@
 
 <div class="banner mt-3 mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('banner.jpg') %>);">
-  <div class="container">
+  <div class="container ">
     <h1>Mi joyita</h1>
     <p>Compra y venta de joyas</p>
   </div>
@@ -9,31 +9,31 @@
 
 <div class="cards">
 
-  <%=link_to products_path(query: 'Arete') do%>
+  <%=link_to products_path(query: 'Arete'), class:"link-offset-2 link-underline link-underline-opacity-0" do%>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('aretes.jpg') %>)">
-      Aretes
+      <p class="no-underline">Aretes</p>
     </div>
   <% end %>
 
-  <%=link_to products_path(query: 'Anillo') do%>
+  <%=link_to products_path(query: 'Anillo'), class:"link-offset-2 link-underline link-underline-opacity-0" do%>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('anillo.jpg') %>)">
       Anillos
     </div>
   <% end %>
 
-  <%=link_to products_path(query: 'Collar') do%>
+  <%=link_to products_path(query: 'Collar'), class:"link-offset-2 link-underline link-underline-opacity-0" do%>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('collares.jpg') %>)">
       Collares
     </div>
    <% end %>
 
-  <%=link_to products_path(query: 'Pulsera') do%>
+  <%=link_to products_path(query: 'Pulsera'), class:"link-offset-2 link-underline link-underline-opacity-0" do%>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('pulsera.jpg') %>)">
       Pulseras
     </div>
   <% end %>
 
-  <%= link_to products_path do %>
+  <%= link_to products_path, class:"link-offset-2 link-underline link-underline-opacity-0" do %>
     <div class="card-category link-offset-2 link-underline link-underline-opacity-0" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('joyastodas.jpg') %>)">
       Todos los productos
     </div>
