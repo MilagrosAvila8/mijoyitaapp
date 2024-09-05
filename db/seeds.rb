@@ -9,6 +9,7 @@
 #   end
 
 Product.destroy_all
+User.create(email: "vendedor@joyita.com", password: "123456")
 
 mijoyita_names = [
   "Elegant Necklace", "Diamond Ring", "Gold Bracelet", "Silver Earrings",
@@ -24,6 +25,7 @@ mijoyita_names.each do |name|
   Product.create(
     name: name,
     price: rand(50..500), # Precio aleatorio entre 50 y 500
-    comment: "This is a beautiful #{name.downcase} perfect for any occasion."
+    comment: "This is a beautiful #{name.downcase} perfect for any occasion.",
+    user_id: User.last.id
   )
 end
