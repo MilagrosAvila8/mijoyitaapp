@@ -39,27 +39,56 @@ class LineItemsController < ApplicationController
   end
 
   # PATCH/PUT /line_items/:id
+  # def update
+  #   @line_item = LineItem.find(params[:id])
+
+  #   if @line_item.update(line_item_params)
+  #     if current_cart.present? && current_cart.id.present?
+  #       redirect_to cart_path(current_cart), notice: 'Item was successfully updated.'
+  #     else
+  #       flash[:alert] = "Cart not found."
+  #       redirect_to root_path  # O a una página adecuada en caso de que no haya un carrito
+  #     end
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
+
   def update
-    @line_item = LineItem.find(params[:id])
+    @line_item = LineItem.find_by(id: params[:id])  # Cambié `find` por `find_by` para manejar el caso de `nil`
+
+    if @line_item.nil?
+      flash[:alert] = "Line item not found."
+      redirect_to cart_path(current_user.cart)  # O la ruta que consideres adecuada
+      return
+    end
+
     if @line_item.update(line_item_params)
-      redirect_to @line_item, notice: 'Product was updated'
+      if current_user.cart.present?
+        redirect_to cart_path(current_user.cart), notice: 'Item was successfully updated.'
+      else
+        flash[:alert] = "Cart not found."
+        redirect_to root_path  # O una página apropiada en caso de que no haya un carrito
+      end
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
+
   # DELETE /line_items/:id
   def destroy
-    @line_item = LineItem.find(params[:id])
+    @line_item = LineItem.find_by(id: params[:id])
     @line_item.destroy
-    redirect_to lineItems_url, notice: 'Product was destroyed.'
+    redirect_to cart_path(current_user.cart), notice: 'Item was successfully removed.'
+    #redirect_to cart_path(line_item.cart)
   end
 
   private
 
   # Only allow a list of trusted parameters through.
   def line_item_params
-    params.require(:line_item).permit(:cart_id, :product_id, :quantity, :price)
+    params.require(:line_item).permit(:quantity, :price)
   end
 
 end

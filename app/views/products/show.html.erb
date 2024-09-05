@@ -8,6 +8,11 @@
       http://127.0.0.1:3000/products/26
       product_line_items
     </div>
-<%= simple_form_for [@product, @line_item] do |f| %>
-<%= f.submit value: "Agregar al carrito" %>
+
+
+<%= form_with(url: line_items_path, method: :post) do %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= label_tag :quantity, "Quantity" %>
+  <%= number_field_tag :quantity, 1, min: 1 %>
+  <%= submit_tag "Add to Cart" %>
 <% end %>
