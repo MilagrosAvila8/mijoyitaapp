@@ -1,27 +1,30 @@
-<h2>Mis Compras</h2>
+<h2 class="text-center mb-5 mt-5">Mis Compras</h2>
 
 <% if @carts.any? %>
   <% @carts.each do |cart| %>
-    <h3>Carrito ID: <%= cart.id %></h3>
-    <p>Status: <%= cart.status %></p>
-    <h4>Items:</h4>
-    <ul>
-      <% cart.line_items.each do |item| %>
-        <li>
-          Producto: <%= item.product.name %><br>
-          Cantidad: <%= item.quantity %><br>
-          Precio: <%= number_to_currency(item.price) %><br>
-          Total: <%= number_to_currency(item.quantity * item.price) %><br>
-          <% if item.product.photo.present? %>
-            <%= cl_image_tag(item.product.photo.key, width: 150, height: 150, crop: :fit) %>
-          <% else %>
-            <p>No image available</p>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-    <hr>
+    <div class="custom-card p-4 mb-5 rounded">
+      <h4 class=" mb-3">Nº de Orden: <%= cart.id %></h4>
+      <h5 class="text-muted mb-4"><strong>Estado:</strong> <%= cart.status %></h5>
+      <h5 class="mb-4"><strong>Artículos:</strong></h5>
+      <ul class="list-unstyled">
+        <% cart.line_items.each do |item| %>
+          <li class="d-flex align-items-start mb-4 border-bottom pb-3">
+            <% if item.product.photo.present? %>
+              <%= cl_image_tag(item.product.photo.key, width: 150, height: 150, crop: :fit, class: 'img-thumbnail mr-3 border') %>
+            <% else %>
+              <div class="img-thumbnail mr-3 border" style="width: 150px; height: 150px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">No image available</div>
+            <% end %>
+            <div class= "ms-3">
+              <p class="mb-2"><strong class="text-dark">Producto:</strong> <%= item.product.name %></p>
+              <p class="mb-2"><strong class="text-dark">Cantidad:</strong> <%= item.quantity %></p>
+              <p class="mb-2"><strong class="text-dark">Precio:</strong> <%= number_to_currency(item.price) %></p>
+              <p class="mb-2"><strong class="text-dark">Total:</strong> <%= number_to_currency(item.quantity * item.price) %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 <% else %>
-  <p>No tienes compras registradas.</p>
+  <p class="text-center text-muted">No tienes compras registradas.</p>
 <% end %>

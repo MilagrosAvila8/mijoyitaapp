@@ -1,28 +1,40 @@
-<div class= " bg-white shadow m-2 p-4">
-<h1>Resumen de Compra</h1>
-<p>Estado: <%= @cart.status %></p>
-<p>Total a pagar: <%= number_to_currency(@total) %></p>
-<%= button_to 'Pagar', close_cart_path(@cart), method: :patch, class: 'btn-warning', data: { confirm: 'Are you sure you want to close this cart?' } %>
-</div>
+<div class="container mt-5">
+  <div class="row">
 
-<div class= " bg-white shadow m-2 p-4">
-<h2>Productos Seleccionados</h2>
-<p>
-<% @line_items.each do |item| %>
-  <div>
-    <p>Nonbre del Producto: <%= item.product.name %></p>
-    <p>Cantidad: <%= item.quantity %></p>
-    <p>Precio: <%= number_to_currency(item.price) %></p>
-     <%= form_with(model: item, url: line_item_path(item), method: :patch, local: true) do |form| %>
-      <%= form.label :quantity, "Cantidad" %>
-      <%= form.number_field :quantity, min: 1, value: item.quantity %>
-      <%= form.submit "Aumentar Cantidad",class: 'btn-warning' %>
-      <% end %>
-    <%= button_to 'Eliminar', line_item_path(item), class: 'btn-warning',method: :delete, data: { confirm: 'Are you sure?' } %>
-  <div>
-</p>
+    <!-- Productos Seleccionados -->
+    <div class="col-md-6 mb-4">
+      <div class="bg-white shadow-sm p-4 rounded">
+        <h2 class="mb-4">Productos Seleccionados</h2>
+        <% @line_items.each do |item| %>
+          <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
+            <div>
+              <p class="mb-1"><strong>Nombre del Producto:</strong> <%= item.product.name %></p>
+              <p class="mb-1"><strong>Cantidad:</strong> <%= item.quantity %></p>
+              <p class="mb-1"><strong>Precio:</strong> <%= number_to_currency(item.price) %></p>
+            </div>
+            <div class="d-flex flex-column align-items-end">
+              <%= form_with(model: item, url: line_item_path(item), method: :patch, local: true, class: 'mb-2') do |form| %>
+                <div class="input-group input-group-sm">
+                  <%= form.number_field :quantity, min: 1, value: item.quantity, class: 'form-control form-control-sm' %>
+                  <div class="input-group-append">
+                    <%= form.submit "Actualizar", class: 'btn btn-sm btn-warning' %>
+                  </div>
+                </div>
+              <% end %>
+              <%= button_to 'Eliminar', line_item_path(item), method: :delete, class: 'btn btn-sm btn-joyita mt-2 btn-icon', data: { confirm: '¿Estás seguro?' } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+        <!-- Resumen de Compra -->
+    <div class="col-md-6 mb-4">
+      <div class="bg-white shadow-sm p-4 rounded">
+        <h2 class="mb-4">Resumen de Compra</h2>
+        <p><strong>Estado:</strong> <%= @cart.status %></p>
+        <p><strong>Total a pagar:</strong> <%= number_to_currency(@total) %></p>
+        <%= button_to 'Pagar', close_cart_path(@cart), method: :patch, class: 'btn btn-joyita mt-3', data: { confirm: '¿Estás seguro de que quieres cerrar este carrito?' } %>
+      </div>
+    </div>
+  </div>
 </div>
-  </div>
-  </div>
-  </div>
-<% end %>
