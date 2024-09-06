@@ -1,0 +1,27 @@
+<h2>Mis Compras</h2>
+
+<% if @carts.any? %>
+  <% @carts.each do |cart| %>
+    <h3>Carrito ID: <%= cart.id %></h3>
+    <p>Status: <%= cart.status %></p>
+    <h4>Items:</h4>
+    <ul>
+      <% cart.line_items.each do |item| %>
+        <li>
+          Producto: <%= item.product.name %><br>
+          Cantidad: <%= item.quantity %><br>
+          Precio: <%= number_to_currency(item.price) %><br>
+          Total: <%= number_to_currency(item.quantity * item.price) %><br>
+          <% if item.product.photo.present? %>
+            <%= cl_image_tag(item.product.photo.key, width: 150, height: 150, crop: :fit) %>
+          <% else %>
+            <p>No image available</p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <hr>
+  <% end %>
+<% else %>
+  <p>No tienes compras registradas.</p>
+<% end %>

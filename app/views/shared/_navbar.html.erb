@@ -32,14 +32,13 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mi Perfil", edit_user_registration_path, class: "dropdown-item" %>
               <%# <%= link_to "Mis compras", "#", class: "dropdown-item" %>
-              <%= link_to "Mis ventas", boughts_path, class: "dropdown-item" %>
               <%= link_to "Publicar Articulo", new_product_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
             <% else  %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mi Perfil", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Mis compras", sales_path, class: "dropdown-item" %>
+              <%= link_to "Mis compras", boughts_path, class: "dropdown-item" %>
               <%# <%= link_to "Mis ventas", "#", class: "dropdown-item" %>
               <%# <%= link_to "Publicar Articulo", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
