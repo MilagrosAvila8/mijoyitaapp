@@ -25,6 +25,9 @@ class CartsController < ApplicationController
     redirect_to root_path
   end
 
+  def boughts
+    @carts = Cart.where(user_id: current_user.id, status: "Pagado")
+  end
   private
 
   def set_cart
