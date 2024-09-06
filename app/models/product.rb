@@ -6,4 +6,12 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :comment, length: { minimum: 15 }
   has_one_attached :photo
+
+  validate :image_presence
+
+  private
+
+  def image_presence
+    errors.add(:photo, "Falta agregar la imagen") unless photo.attached?
+  end
 end

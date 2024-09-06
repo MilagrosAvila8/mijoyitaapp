@@ -11,3 +11,97 @@
 @import "components/index";
 @import "pages/index";
 
+/* Mantiene la imagen del producto fija al hacer scroll */
+.product-image-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Estilo de la imagen del producto */
+.product-image {
+  width: 100%;
+  object-fit: cover;
+  max-height: 500px; /* Ajusta según el tamaño deseado */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos generales */
+.container {
+  max-width: 1200px;
+}
+
+.product-image-wrapper {
+  border: 1px solid #eaeaea;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+/* Estilos del título y precio */
+.product-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-price {
+  font-size: 1.75rem;
+  color: #e74c3c; /* Color similar al usado en Sissai */
+}
+
+.product-comment {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* Estilos de botones */
+.btn-warning {
+  background-color: #D0B8A8;
+  border-color: #D0B8A8;
+  color: #fff;
+  border-width: 2px;  /* Corregido el espacio */
+  border-radius: 13px; /* Corregido el espacio */
+
+  &:hover {
+    background-color: darken(#D0B8A8, 10%);
+    border-color: darken(#D0B8A8, 10%);
+  }
+}
+
+.btn-warning.text-light {
+  color: #fff;
+}
+
+/* Estilos adicionales para botones en input-group */
+.input-group-append .btn {
+  background-color: #D0B8A8;
+  border-color: #D0B8A8;
+  border-radius: 13px; /* Alineado con los botones generales */
+
+  &:hover {
+    background-color: darken(#D0B8A8, 10%);
+    border-color: darken(#D0B8A8, 10%);
+  }
+}
+
+/* Estilos del formulario */
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 4px;
+  border-color: #ced4da;
+}
+
+.input-group {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.input-group-append .btn {
+  border-radius: 0;
+}
