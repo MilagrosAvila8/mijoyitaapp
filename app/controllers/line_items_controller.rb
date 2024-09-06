@@ -6,7 +6,11 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
 
     # Encuentra o crea el carrito del usuario
-    cart = Cart.where(status: "En proceso", user_id: current_user).first
+    cart = Cart.where(status: "En proceso", user_id: current_user.id).first
+    if cart == nil
+      cart = Cart.new(user_id: current_user.id)
+      cart.save
+    end
 
 
     # Encuentra o crea el LineItem para el producto en el carrito
@@ -64,9 +68,10 @@ class LineItemsController < ApplicationController
       return
     end
 
+
     if @line_item.update(line_item_params)
       if current_user.cart.present?
-        redirect_to cart_path(current_user.cart), notice: 'Item was successfully updated.'
+        redirect_to cart_path(@current_cart), notice: 'Item was successfully updated.'
       else
         flash[:alert] = "Cart not found."
         redirect_to root_path  # O una página apropiada en caso de que no haya un carrito
@@ -81,7 +86,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item = LineItem.find_by(id: params[:id])
     @line_item.destroy
-    redirect_to cart_path(current_user.cart), notice: 'Item was successfully removed.'
+    redirect_to cart_path(@current_cart), notice: 'Item was successfully removed.'
     #redirect_to cart_path(line_item.cart)
   end
 
