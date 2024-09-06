@@ -1,9 +1,15 @@
-<h1>Publicar nuevo Producto</h1>
 
+<div class=  "container shadow border mt-5 p-4 w-50">
+<h2>CREA TU NUEVO PRODUCTO</h2>
+<div class = "mt-5">
 <%= simple_form_for(@product) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :comment %>
-  <%= f.input :photo, as: :file, hint: "15kb" %>
-  <%= f.submit %>
-<% end %>
+  <%= f.input :name, label:"Nombre del producto" %>
+  <%= f.input :price, label:"Precio del producto" %>
+  <%= f.input :comment,label:"Descripcion del producto *" %>
+  <%= f.input :photo, as: :file, hint: "15kb", label:"Subir foto *" %>
+  <%= f.submit "Subir Producto" %>
+ <% end %>
+</div>
+
+
+</div>
