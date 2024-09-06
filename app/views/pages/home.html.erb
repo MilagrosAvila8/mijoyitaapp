@@ -1,7 +1,6 @@
 
 <div class="banner mt-3 mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('banner.jpg') %>);">
   <div class="container ">
-    <h1>Mi joyita</h1>
     <p>Compra y venta de joyas</p>
   </div>
 </div>
@@ -30,6 +29,12 @@
   <%=link_to products_path(query: 'Pulsera'), class:"link-offset-2 link-underline link-underline-opacity-0" do%>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('pulsera.jpg') %>)">
       Pulseras
+    </div>
+  <% end %>
+
+    <%=link_to products_path(query: 'Dije'), class:"link-offset-2 link-underline link-underline-opacity-0" do%>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('dije.jpg') %>)">
+      Dijes
     </div>
   <% end %>
 
