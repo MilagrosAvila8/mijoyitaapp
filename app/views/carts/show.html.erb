@@ -1,23 +1,27 @@
-<h1>Cart Details</h1>
-<p>Status: <%= @cart.status %></p>
-<p>Total: <%= number_to_currency(@total) %></p>
-<%= button_to 'Pagar', close_cart_path(@cart), method: :patch, class: 'btn btn-warning', data: { confirm: 'Are you sure you want to close this cart?' } %>
+<div class= " bg-white shadow m-2 p-4">
+<h1>Resumen de Compra</h1>
+<p>Estado: <%= @cart.status %></p>
+<p>Total a pagar: <%= number_to_currency(@total) %></p>
+<%= button_to 'Pagar', close_cart_path(@cart), method: :patch, class: 'btn-yours', data: { confirm: 'Are you sure you want to close this cart?' } %>
+</div>
 
-<h2>Line Items</h2>
+<div class= " bg-white shadow m-2 p-4">
+<h2>Productos Seleccionados</h2>
 <p>
 <% @line_items.each do |item| %>
   <div>
-    <p>Product Name: <%= item.product.name %></p>
-    <p>Quantity: <%= item.quantity %></p>
-    <p>Price: <%= number_to_currency(item.price) %></p>
+    <p>Nonbre del Producto: <%= item.product.name %></p>
+    <p>Cantidad: <%= item.quantity %></p>
+    <p>Precio: <%= number_to_currency(item.price) %></p>
      <%= form_with(model: item, url: line_item_path(item), method: :patch, local: true) do |form| %>
       <%= form.label :quantity, "Cantidad" %>
       <%= form.number_field :quantity, min: 1, value: item.quantity %>
-      <%= form.submit "Update Quantity" %>
+      <%= form.submit "Aumentar Cantidad",class: 'btn-yours' %>
       <% end %>
-    <%= button_to 'Remove', line_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= button_to 'Eliminar', line_item_path(item), class: 'btn-yours',method: :delete, data: { confirm: 'Are you sure?' } %>
   <div>
 </p>
+</div>
   </div>
   </div>
   </div>
