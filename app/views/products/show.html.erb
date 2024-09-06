@@ -7,8 +7,6 @@
       <p><%= @product.price%></p>
       <h3><%= @product.comment %></h3>
       <h4><%= cl_image_tag(@product.photo.key, height: 200, crop: :fill) %></h4>
-      http://127.0.0.1:3000/products/26
-      product_line_items
     <div>
 
       <%= link_to 'Delete', product_path(@product),
